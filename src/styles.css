@@ -14,7 +14,7 @@ body {
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
     color: var(--white);
-    /* background-image: url('./assets/dark_bg.jpg'); */
+    background-image: url('./assets/dark_bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
