@@ -6,10 +6,8 @@ import { RegisterComponent } from "./components/register/register.component";
 import { CartComponent } from "./components/cart/cart.component";
 import { CheckoutComponent } from "./components/checkout/checkout.component";
 import { ProductComponent } from "./components/product/product.component";
-import { MenComponent } from './components/men/men.component';
-import { WomenComponent } from './components/women/women.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { CollectionComponent } from './components/collection/collection.component';
+import { ProductsComponent } from './components/products/products.component';
 
 const routes: Routes = [
   {
@@ -25,10 +23,10 @@ const routes: Routes = [
     path: 'product/:id', component: ProductComponent
   },
   {
-    path: 'men', component: MenComponent
+    path: 'men', component: ProductsComponent
   },
   {
-    path: 'women', component: WomenComponent
+    path: 'women', component: ProductsComponent
   },
   {
     path: 'contact', component: ContactComponent
@@ -37,7 +35,7 @@ const routes: Routes = [
     path: 'cart', component: CartComponent
   },
   {
-    path: 'collection', component: CollectionComponent
+    path: 'collection', component: ProductsComponent
   },
   {
     path: 'checkout', component: CheckoutComponent

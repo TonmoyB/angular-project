@@ -7,6 +7,43 @@
     margin: auto;
 }
 
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #555;
+}
+
+.breadcrumb-link {
+    text-decoration: none;
+    color: #888;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.breadcrumb-link i {
+    margin-right: 5px;
+}
+
+.breadcrumb-link:hover {
+    color: white;
+}
+
+.breadcrumb span,
+a {
+    margin: 0 5px;
+    color: #888;
+}
+
+.breadcrumb-current {
+    font-weight: 400;
+    color: #555;
+}
+
+
 .product-title {
     font-size: 3rem;
     font-family: "Cormorant", serif;

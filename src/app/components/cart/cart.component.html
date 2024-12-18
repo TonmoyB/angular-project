@@ -3,8 +3,9 @@
     <h1 class="cart-title">Cart</h1>
     <br><br>
 
-    <!-- Main Cart Layout (Two Columns) -->
-    <div class="cart-content">
+    <!-- Main Cart Layout -->
+    <div class="cart-content" *ngIf="cartItems.length > 0; else emptyCartTemplate">
+
         <!-- Left Column: Cart Table -->
         <div class="cart-table">
             <table>
@@ -17,45 +18,66 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <!-- Product Image -->
+                    <tr *ngFor="let cartItem of cartItems">
+                        <!-- Product Image, Name, and Remove Button -->
                         <td class="product-info">
-                            <button class="remove-btn">×</button>
-                            <img src="../../../assets/twin-modal-diamond-ring.jpg" alt="Product Image" />
+                            <button class="remove-btn" (click)="removeItem(cartItem.product.id)">×</button>
+                            <img [src]="cartItem.product.image" [alt]="cartItem.product.name" />
+                            <span>{{ cartItem.product.name }}</span>
                         </td>
-                        <!-- Price -->
-                        <td class="product-price">$185.00</td>
-                        <!-- Quantity -->
+
+                        <!-- Product Price -->
+                        <td class="product-price">${{ cartItem.product.price }}</td>
+
+                        <!-- Quantity Controls -->
                         <td class="product-quantity">
-                            <button class="quantity-btn">-</button>
-                            <input type="text" value="2" />
-                            <button class="quantity-btn">+</button>
+                            <button class="quantity-btn" (click)="decrementQuantity(cartItem.product.id)">-</button>
+                            <input type="text" [value]="cartItem.quantity"
+                                (input)="onQuantityInput(cartItem.product, $event)"
+                                (change)="onQuantityChange(cartItem.product, cartItem.quantity.toString())" />
+                            <button class="quantity-btn" (click)="incrementQuantity(cartItem.product.id)">+</button>
                         </td>
+
                         <!-- Subtotal -->
-                        <td class="product-subtotal">$370.00</td>
+                        <td class="product-subtotal">
+                            ${{ (cartItem.product.price * cartItem.quantity).toFixed(2) }}
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
         <!-- Right Column: Cart Totals -->
-        <div class="cart-totals">
+        <div class="cart-totals" style="position: relative; height: 300px;">
             <h3>Cart totals</h3>
             <div class="cart-summary">
+                <!-- Subtotal -->
                 <div class="summary-row">
                     <span>Subtotal</span>
-                    <span>$370.00</span>
+                    <span>${{ subtotal.toFixed(2) }}</span>
                 </div>
+
+                <!-- Discount -->
                 <div class="summary-row">
-                    <span>Discount</span>
-                    <span>$0.00</span>
+                    <span>Discount (5%)</span>
+                    <span>-${{ discount.toFixed(2) }}</span>
                 </div>
-                <div class="summary-row" style="font-weight: bold; font-size:x-large">
+
+                <!-- Total Price -->
+                <div class="summary-row" style="font-weight: bold; font-size: x-large;">
                     <span>Total</span>
-                    <span>$370.00</span>
+                    <span>${{ totalPrice.toFixed(2) }}</span>
                 </div>
             </div>
             <button class="checkout-btn">PROCEED TO CHECKOUT</button>
         </div>
+
     </div>
+
+    <!-- Template for Empty Cart -->
+    <ng-template #emptyCartTemplate>
+        <div class="empty-cart-message">
+            <h2>Your cart is empty! Nothing to show!</h2>
+        </div>
+    </ng-template>
 </div>

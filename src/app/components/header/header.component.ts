@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from 'src/app/services/cart/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -7,19 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  navItems = [
+    { label: 'HOME', link: '/', exact: true },
+    { label: 'MEN', link: '/men', exact: false },
+    { label: 'WOMEN', link: '/women', exact: false },
+    { label: 'COLLECTION', link: '/collection', exact: false },
+    { label: 'CONTACT', link: '/contact', exact: false }
+  ];
+  cartCount: number = 0;
+  menuOpen: boolean = false;
+
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
+    this.cartCount = this.cartService.cartCount;
+    this.cartService.onCartChange = () => {
+      this.cartCount = this.cartService.cartCount;
+    };
   }
-  cartCount: number = 0;
-  isMenuOpen: boolean = false;
 
   toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
-    const menu = document.getElementById('nav-menu');
-    if (menu) {
-      menu.style.display = this.isMenuOpen ? 'block' : 'none';
-    }
+    this.menuOpen = !this.menuOpen;
   }
-
 }

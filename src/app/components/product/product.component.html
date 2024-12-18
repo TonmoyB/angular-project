@@ -1,16 +1,21 @@
 <div class="product-details">
 
-    <h1 class="product-title">Twin Modal Diamond Ring</h1>
+    <nav class="breadcrumb">
+        <a (click)="goBack()" class="breadcrumb-link">{{ previousTitle }} </a>
+        <span> / </span>
+        <span class="breadcrumb-current">{{ product.name }}</span>
+    </nav>
+
+    <h1 class="product-title">{{ product.name }}</h1>
 
     <div class="product-container">
         <div class="product-image">
-            <img src="../../../assets/twin-modal-diamond-ring.jpg" alt="Twin Modal Diamond Ring" />
+            <img [src]="product.image" alt="{{ product.name }}" />
         </div>
 
         <div class="product-info">
             <h2 class="price">
-                <!-- <span class="old-price">$123.00</span> -->
-                <span class="new-price">$99.00</span>
+                <span class="new-price">${{ product.price }}</span>
             </h2>
             <p class="product-description">
                 Porttitor magna cras vel libero hendrerit vel nam in sapien id urna egestas cursus. Ut enim ad minim
@@ -19,9 +24,9 @@
 
             <div class="product-actions">
                 <div class="quantity-selector">
-                    <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
-                    <input type="text" id="quantity-input" value="1" min="1" />
-                    <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                    <button class="quantity-btn">-</button>
+                    <input type="text" value="1" min="1" />
+                    <button class="quantity-btn">+</button>
                 </div>
                 <button class="btn-primary add-to-cart">Add to Cart</button>
             </div>

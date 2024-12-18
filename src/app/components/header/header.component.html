@@ -6,12 +6,12 @@
 
         <nav class="nav" id="nav-menu">
             <ul>
-                <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">HOME</a>
+                <li *ngFor="let navItem of navItems">
+                    <a [routerLink]="navItem.link" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: navItem.exact }">
+                        {{ navItem.label }}
+                    </a>
                 </li>
-                <li><a routerLink="/men" routerLinkActive="active">MEN</a></li>
-                <li><a routerLink="/women" routerLinkActive="active">WOMEN</a></li>
-                <li><a routerLink="/collection" routerLinkActive="active">COLLECTION</a></li>
-                <li><a routerLink="/contact" routerLinkActive="active">CONTACT</a></li>
             </ul>
         </nav>
 
@@ -22,7 +22,7 @@
             </a>
         </div>
 
-        <div class="mobile-menu" onclick="toggleMenu()">
+        <div class="mobile-menu" (click)="toggleMenu()">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>

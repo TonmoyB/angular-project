@@ -34,7 +34,7 @@ table {
 }
 
 thead th {
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #333;
     padding: 1rem 0;
 }
@@ -95,6 +95,7 @@ tbody td {
     margin: 0 0.3rem;
     background-color: #222;
     color: #fff;
+    font-size: 1rem;
 }
 
 /* Cart Totals */
@@ -146,6 +147,13 @@ tbody td {
 .checkout-btn:hover {
     background-color: #d4af37;
 
+}
+
+.empty-cart-message {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.5rem;
+    color: var(--gold);
 }
 
 @media (max-width: 768px) {
