@@ -1,0 +1,12 @@
+.mainBody {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    color: #fff;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.mainBody::-webkit-scrollbar {
+    display: none;
+}

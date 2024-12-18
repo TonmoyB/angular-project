@@ -1,0 +1,61 @@
+<div class="cart-container">
+    <!-- Cart Header -->
+    <h1 class="cart-title">Cart</h1>
+    <br><br>
+
+    <!-- Main Cart Layout (Two Columns) -->
+    <div class="cart-content">
+        <!-- Left Column: Cart Table -->
+        <div class="cart-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <!-- Product Image -->
+                        <td class="product-info">
+                            <button class="remove-btn">×</button>
+                            <img src="../../../assets/twin-modal-diamond-ring.jpg" alt="Product Image" />
+                        </td>
+                        <!-- Price -->
+                        <td class="product-price">$185.00</td>
+                        <!-- Quantity -->
+                        <td class="product-quantity">
+                            <button class="quantity-btn">-</button>
+                            <input type="text" value="2" />
+                            <button class="quantity-btn">+</button>
+                        </td>
+                        <!-- Subtotal -->
+                        <td class="product-subtotal">$370.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Right Column: Cart Totals -->
+        <div class="cart-totals">
+            <h3>Cart totals</h3>
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span>$370.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Discount</span>
+                    <span>$0.00</span>
+                </div>
+                <div class="summary-row" style="font-weight: bold; font-size:x-large">
+                    <span>Total</span>
+                    <span>$370.00</span>
+                </div>
+            </div>
+            <button class="checkout-btn">PROCEED TO CHECKOUT</button>
+        </div>
+    </div>
+</div>

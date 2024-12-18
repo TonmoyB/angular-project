@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --gold: #c4a962;
+    --gold-hover: #e8c872;
+    --black: #000000;
+    --dark-gray: #1e1e1e;
+    --white: #ffffff;
+    --light-gray: #d3d3d3;
+    --transition: all 0.3s ease;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    color: var(--white);
+    background-image: url('../../e-shop/src/assets/dark_bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
