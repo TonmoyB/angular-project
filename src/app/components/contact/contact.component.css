@@ -1,0 +1,129 @@
+.contact-page-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    border-radius: 10px;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.3rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    margin-bottom: 2rem;
+}
+
+.info-card {
+    background-color: black;
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.4s ease;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.info-card:hover {
+    background-color: var(--gold);
+}
+
+.info-card:hover .icon {
+    color: #ffffff;
+}
+
+.info-card:hover p {
+    color: #ffffff;
+}
+
+.info-card .icon {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+}
+
+.info-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.info-card p {
+    font-size: 1rem;
+    margin: 0.2rem 0;
+    color: var(--gold);
+}
+
+.contact-form {
+    width: 100%;
+    max-width: 900px;
+    background-color: var(--gold);
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+.contact-form h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form-group {
+    /* margin-bottom: 1rem; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 95%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    color: #fff;
+    background: #555;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #333;
+}
+
+.feedBackForm {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+}
+
+.personalInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.messageInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex: 2;
+}

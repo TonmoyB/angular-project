@@ -13,13 +13,13 @@ export class CartService {
 
   constructor() { }
 
-  addToCart(product: Product): void {
+  addToCart(product: Product, quantity?: number): void {
     const existingItem = this.cartItems.find(item => item.product.id === product.id);
 
     if (existingItem) {
-      existingItem.quantity += 1;
+      existingItem.quantity += quantity ?? 1;
     } else {
-      this.cartItems.push({ product, quantity: 1 });
+      this.cartItems.push({ product, quantity: quantity ?? 1 });
     }
 
     this.updateCart();

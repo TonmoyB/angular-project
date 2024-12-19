@@ -15,7 +15,7 @@
 
         <div class="product-info">
             <h2 class="price">
-                <span class="new-price">${{ product.price }}</span>
+                <span class="new-price">${{ totalPrice }}</span>
             </h2>
             <p class="product-description">
                 Porttitor magna cras vel libero hendrerit vel nam in sapien id urna egestas cursus. Ut enim ad minim
@@ -24,11 +24,12 @@
 
             <div class="product-actions">
                 <div class="quantity-selector">
-                    <button class="quantity-btn">-</button>
-                    <input type="text" value="1" min="1" />
-                    <button class="quantity-btn">+</button>
+                    <button class="quantity-btn" (click)="decreaseQuantity()">-</button>
+                    <input type="text" [value]="quantity" (input)="onQuantityInput($event)"
+                        (change)="onQuantityChange()" />
+                    <button class="quantity-btn" (click)="increaseQuantity()">+</button>
                 </div>
-                <button class="btn-primary add-to-cart">Add to Cart</button>
+                <button class="btn-primary add-to-cart" (click)="addToCart()">Add to Cart</button>
             </div>
         </div>
     </div>

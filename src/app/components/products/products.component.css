@@ -3,6 +3,7 @@
     margin: 0 auto;
     padding: 1rem 1rem;
     margin-bottom: 1rem;
+
 }
 
 /* Product Grid */
@@ -98,8 +99,7 @@
 .sort-container {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    margin-bottom: 1rem;
+    justify-content: center;
 }
 
 .sort-label {
@@ -123,10 +123,54 @@
     outline: none;
     transition: border-color 0.3s ease;
     text-align: center;
+    width: 190px;
 }
 
 .sort-dropdown:hover,
 .sort-dropdown:focus,
 .sort-dropdown:option {
+    border-color: #d4af37;
+}
+
+.filter-sort-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 1.5rem;
+}
+
+.filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter-label {
+    font-size: 1.1rem;
+    color: var(--gold);
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.filter-dropdown {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #d4af37;
+    border-radius: 15px;
+    cursor: pointer;
+    background: white;
+    color: black;
+    appearance: none;
+    outline: none;
+    transition: border-color 0.3s ease;
+    text-align: center;
+    width: 150px;
+}
+
+.filter-dropdown:hover,
+.filter-dropdown:focus {
     border-color: #d4af37;
 }

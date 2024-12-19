@@ -8,6 +8,7 @@ import { CartService } from 'src/app/services/cart/cart.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
+
 export class ProductsComponent implements OnInit {
 
   products: Product[] = [];
@@ -32,6 +33,7 @@ export class ProductsComponent implements OnInit {
   navigateToProduct(product: Product) {
     this.router.navigate(['/product', product.id], {
       queryParams: {
+        id: product.id,
         name: product.name,
         price: product.price,
         image: product.image,
@@ -58,6 +60,18 @@ export class ProductsComponent implements OnInit {
       this.products.sort((a, b) => a.name.localeCompare(b.name));
     } else if (sortBy === 'nameZA') {
       this.products.sort((a, b) => b.name.localeCompare(a.name));
+    }
+  }
+
+  onFilterChange(event: Event) {
+    const filterBy = (event.target as HTMLSelectElement).value;
+
+    if (filterBy === 'all') {
+      this.products = [...this.originalProducts]; // Show all products
+    } else {
+      this.products = this.originalProducts.filter(
+        (product) => product.type === filterBy
+      );
     }
   }
 

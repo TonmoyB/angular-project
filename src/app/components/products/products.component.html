@@ -1,14 +1,30 @@
 <div class="product-list-container">
 
-    <div class="sort-container">
-        <label for="sortDropdown" class="sort-label">Sort By:</label>
-        <select id="sortDropdown" class="sort-dropdown" (change)="onSortChange($event)">
-            <option value="default">Default</option>
-            <option value="priceLowHigh">Price: Low to High</option>
-            <option value="priceHighLow">Price: High to Low</option>
-            <option value="nameAZ">Name: A - Z</option>
-            <option value="nameZA">Name: Z - A</option>
-        </select>
+    <!-- Filter and Sort Container -->
+    <div class="filter-sort-container">
+        <!-- Filter Dropdown -->
+        <div class="filter-container">
+            <label for="filterDropdown" class="filter-label">Filter By:</label>
+            <select id="filterDropdown" class="filter-dropdown" (change)="onFilterChange($event)">
+                <option value="all">All</option>
+                <option value="ring">Ring</option>
+                <option value="bracelet">Bracelet</option>
+                <option value="pendant">Pendant</option>
+                <option value="chain">Chain</option>
+            </select>
+        </div>
+
+        <!-- Sort Dropdown -->
+        <div class="sort-container">
+            <label for="sortDropdown" class="sort-label">Sort By:</label>
+            <select id="sortDropdown" class="sort-dropdown" (change)="onSortChange($event)">
+                <option value="default">Default</option>
+                <option value="priceLowHigh">Price: Low to High</option>
+                <option value="priceHighLow">Price: High to Low</option>
+                <option value="nameAZ">Name: A - Z</option>
+                <option value="nameZA">Name: Z - A</option>
+            </select>
+        </div>
     </div>
 
     <!-- Product Grid -->
