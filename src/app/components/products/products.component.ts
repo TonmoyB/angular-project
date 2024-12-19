@@ -176,14 +176,14 @@ export class ProductsComponent implements OnInit {
     },
     {
       id: '17',
-      name: 'Timeless Statement.png',
+      name: 'Timeless Statement',
       price: 99.00,
       image: '../../../assets/men/Timeless Statement Gold Chain.png',
       type: 'chain'
     },
     {
       id: '18',
-      name: 'Rudraksh Bracelet.png',
+      name: 'Rudraksh Bracelet',
       price: 99.00,
       image: '../../../assets/men/Unique Om Rudraksh Bracelet.png',
       type: 'bracelet'
