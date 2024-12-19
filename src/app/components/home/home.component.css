@@ -30,6 +30,8 @@ p {
     gap: 4rem;
     max-width: 1200px;
     margin: auto;
+    margin-bottom: 2rem;
+    margin-top: 1.5rem;
 }
 
 .home-section button {

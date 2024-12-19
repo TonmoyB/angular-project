@@ -1,4 +1,16 @@
 <div class="product-list-container">
+
+    <div class="sort-container">
+        <label for="sortDropdown" class="sort-label">Sort By:</label>
+        <select id="sortDropdown" class="sort-dropdown" (change)="onSortChange($event)">
+            <option value="default">Default</option>
+            <option value="priceLowHigh">Price: Low to High</option>
+            <option value="priceHighLow">Price: High to Low</option>
+            <option value="nameAZ">Name: A - Z</option>
+            <option value="nameZA">Name: Z - A</option>
+        </select>
+    </div>
+
     <!-- Product Grid -->
     <div class="product-grid">
         <div class="product-card" *ngFor="let product of products" (click)="navigateToProduct(product)">
