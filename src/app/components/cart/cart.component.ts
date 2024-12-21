@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/model';
 import { CartService } from 'src/app/services/cart/cart.service';
 
@@ -16,7 +17,7 @@ export class CartComponent implements OnInit {
   totalPrice: number = 0;
   readonly DISCOUNT_RATE: number = 0.05;
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadCart();
@@ -71,6 +72,10 @@ export class CartComponent implements OnInit {
   removeItem(productId: string): void {
     this.cartService.removeFromCart(productId);
     this.loadCart();
+  }
+
+  goToCheckout(): void {
+    this.router.navigate(['/checkout']);
   }
 
   private getQuantity(productId: string): number {

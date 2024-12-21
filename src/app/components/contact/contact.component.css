@@ -69,10 +69,11 @@
 .contact-form h2 {
     margin-bottom: 1.5rem;
     text-align: center;
+    color: black;
+    font-weight: bold;
 }
 
 .form-group {
-    /* margin-bottom: 1rem; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;

@@ -1,0 +1,70 @@
+.auth-container {
+    width: 400px;
+    margin: 2rem auto;
+    padding: 20px;
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+}
+
+.auth-tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1.5rem;
+}
+
+.auth-tabs button {
+    padding: 10px 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.auth-tabs button.active {
+    font-weight: bold;
+    background-color: var(--gold);
+    color: black;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+}
+
+.form-group div {
+    margin-top: .5rem;
+    color: var(--gold);
+    font-weight: bold;
+}
+
+form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 95%;
+    margin-top: 5px;
+}
+
+button {
+    padding: 10px;
+    background-color: var(--gold);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[disabled] {
+    background-color: grey;
+    cursor: not-allowed;
+}
