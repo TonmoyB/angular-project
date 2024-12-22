@@ -1,22 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class NavigationService {
 
-  private lastRoute: string | null = null;
+  private previousUrl: string = "";
 
-  constructor(private router: Router) { }
-
-  saveCurrentRoute(): void {
-    this.lastRoute = this.router.url;
+  setPreviousUrl(url: string): void {
+    this.previousUrl = url;
   }
 
-  getSavedRoute(): string | null {
-    const route = this.lastRoute;
-    this.lastRoute = null;
-    return route;
+  getPreviousUrl(): string | null {
+    return this.previousUrl;
   }
 }

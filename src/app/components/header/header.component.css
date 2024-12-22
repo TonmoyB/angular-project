@@ -155,17 +155,18 @@
 
 .dropdown-menu {
     position: absolute;
-    top: 50px;
-    right: 0;
+    top: 95%;
+    right: -55px;
     background-color: var(--dark-gray);
     border: 1px solid var(--gold);
     border-radius: 5px;
     padding: 1rem;
     text-align: left;
-    width: 200px;
+    width: 250px;
     display: none;
     z-index: 10;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(10px);
 }
 
 .dropdown-menu.show {

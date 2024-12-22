@@ -13,6 +13,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountComponent } from './components/account/account.component';
+import { NavigationService } from './services/navigation/navigation.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { AccountComponent } from './components/account/account.component';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [NavigationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

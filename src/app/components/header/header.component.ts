@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/cor
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/model';
 import { CartService } from 'src/app/services/cart/cart.service';
+import { NavigationService } from 'src/app/services/navigation/navigation.service';
 import { UserDetectionService } from 'src/app/services/userDetection/user-detection.service';
 
 @Component({
@@ -25,7 +26,8 @@ export class HeaderComponent implements OnInit {
   loggedInUser: User = { name: "", username: "", password: "" };
   dropdownOpen: boolean = false;
 
-  constructor(private cartService: CartService, private router: Router, private userDetectionService: UserDetectionService) { }
+  constructor(private cartService: CartService, private router: Router,
+    private userDetectionService: UserDetectionService, private navigationService: NavigationService) { }
 
   ngOnInit(): void {
     this.cartCount = this.cartService.cartCount;
@@ -58,10 +60,12 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(): void {
+    const currentUrl = this.router.url;
+    this.navigationService.setPreviousUrl(currentUrl);
     this.userDetectionService.logout();
     this.dropdownOpen = false;
     alert('You have been logged out.');
-    // this.router.navigate(['/']);
+
   }
 
   navigateToAccount(): void {

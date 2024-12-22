@@ -23,18 +23,16 @@
                 </a>
             </div>
 
-            <div class="user-auth">
-                <div class="user-dropdown">
-                    <i class="fas fa-user user-icon" (click)="toggleDropdown()"></i>
-                    <div class="dropdown-menu" [class.show]="dropdownOpen">
-                        <ng-container *ngIf="loggedInUser.username; else loginRegister">
-                            <p>{{ loggedInUser.username }}</p>
-                            <button (click)="logout()">Logout</button>
-                        </ng-container>
-                        <ng-template #loginRegister>
-                            <button (click)="navigateToAccount()">Login/Register</button>
-                        </ng-template>
-                    </div>
+            <div class="user-dropdown">
+                <i class="fas fa-user user-icon" (click)="toggleDropdown()"></i>
+                <div class="dropdown-menu" [class.show]="dropdownOpen">
+                    <ng-container *ngIf="loggedInUser.username; else loginRegister">
+                        <p>{{ loggedInUser.username }}</p>
+                        <button (click)="logout()">Logout</button>
+                    </ng-container>
+                    <ng-template #loginRegister>
+                        <button (click)="navigateToAccount()">Login/Register</button>
+                    </ng-template>
                 </div>
             </div>
         </div>

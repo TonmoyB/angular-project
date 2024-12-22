@@ -15,6 +15,7 @@ export class CartComponent implements OnInit {
   subtotal: number = 0;
   discount: number = 0;
   totalPrice: number = 0;
+  checkoutButtonClicked: boolean = false;
   readonly DISCOUNT_RATE: number = 0.05;
 
   constructor(private cartService: CartService, private router: Router) { }
@@ -75,7 +76,13 @@ export class CartComponent implements OnInit {
   }
 
   goToCheckout(): void {
-    this.router.navigate(['/checkout']);
+    this.checkoutButtonClicked = true;
+    this.router.navigate(['/account'], { queryParams: { checkoutButtonClicked: 'true' } });
+  }
+
+  navigateToAccount(): void {
+    this.checkoutButtonClicked = false;
+    this.router.navigate(['/account'], { queryParams: { checkoutButtonClicked: 'true' } });
   }
 
   private getQuantity(productId: string): number {

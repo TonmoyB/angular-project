@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/models/model';
+import { NavigationService } from 'src/app/services/navigation/navigation.service';
 import { UserDetectionService } from 'src/app/services/userDetection/user-detection.service';
 
 @Component({
@@ -13,7 +15,14 @@ export class AccountComponent implements OnInit {
   loginForm: FormGroup;
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router, private userDetectionService: UserDetectionService) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private userDetectionService: UserDetectionService,
+    private navigationService: NavigationService,
+    private route: ActivatedRoute
+  ) {
+
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -30,7 +39,12 @@ export class AccountComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      const checkout = params['checkoutButtonClicked'] === 'true';
+      this.navigationService.setPreviousUrl(checkout ? '/checkout' : '/cart');
+    });
+  }
 
   switchToLogin(): void {
     this.isLogin = true;
@@ -52,9 +66,10 @@ export class AccountComponent implements OnInit {
 
       if (user) {
         console.log('Login successful:', user);
-        this.userDetectionService.setLoggedInUser(user); // Use UserService to set the logged-in user
+        this.userDetectionService.setLoggedInUser(user);
         alert('Login successful!');
-        this.router.navigate(['/checkout']);
+        const previousUrl = this.navigationService.getPreviousUrl();
+        this.router.navigate([previousUrl || '/']); // Redirect to previous or home
       } else {
         alert('Invalid username or password. Please try again.');
       }
@@ -87,8 +102,10 @@ export class AccountComponent implements OnInit {
 
       this.userDetectionService.setLoggedInUser(user);
       console.log('Registration successful and user logged in:', user);
-      alert('Registration successful. You are now logged in. Redirecting to checkout...');
-      this.router.navigate(['/checkout']);
+      alert('Registration successful. You are now logged in.');
+
+      const previousUrl = this.navigationService.getPreviousUrl();
+      this.router.navigate([previousUrl || '/']); // Redirect to previous or home
     } else {
       alert('Please fill in all the required fields correctly.');
     }
