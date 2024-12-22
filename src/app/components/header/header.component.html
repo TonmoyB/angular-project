@@ -15,11 +15,28 @@
             </ul>
         </nav>
 
-        <div class="cart">
-            <a routerLink="/cart" class="cart-icon">
-                <img src="../../../assets/cart-icon.png" alt="Cart" />
-                <span class="cart-count">{{ cartCount }}</span>
-            </a>
+        <div class="cart-user-container">
+            <div class="cart">
+                <a routerLink="/cart" class="cart-icon">
+                    <img src="../../../assets/cart-icon.png" alt="Cart" />
+                    <span class="cart-count">{{ cartCount }}</span>
+                </a>
+            </div>
+
+            <div class="user-auth">
+                <div class="user-dropdown">
+                    <i class="fas fa-user user-icon" (click)="toggleDropdown()"></i>
+                    <div class="dropdown-menu" [class.show]="dropdownOpen">
+                        <ng-container *ngIf="loggedInUser.username; else loginRegister">
+                            <p>Welcome, {{ loggedInUser.username }}</p>
+                            <button (click)="logout()">Logout</button>
+                        </ng-container>
+                        <ng-template #loginRegister>
+                            <button (click)="navigateToAccount()">Login/Register</button>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="mobile-menu" (click)="toggleMenu()">

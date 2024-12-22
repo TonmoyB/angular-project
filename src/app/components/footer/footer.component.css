@@ -3,7 +3,7 @@
     border-top: 2px solid var(--gold);
     padding: 15px 0;
     color: var(--gold);
-    font-size: 14px;
+    font-size: 1rem;
     text-align: center;
 }
 
@@ -23,7 +23,7 @@
 
 .footer-logo p {
     margin: 20px 0;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 .social-icons a {

@@ -5,6 +5,7 @@
     background-color: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(8px);
     border-radius: 10px;
+    min-height: calc(100vh - 415px);
 }
 
 .cart-title {

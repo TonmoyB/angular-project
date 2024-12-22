@@ -22,3 +22,7 @@
 .mainBody::-webkit-scrollbar-thumb:hover {
     background-color: #d4af37;
 }
+
+.subBody {
+    min-height: calc(100vh - 350px);
+}

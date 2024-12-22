@@ -9,8 +9,6 @@ import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/product/product.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -25,8 +23,6 @@ import { AccountComponent } from './components/account/account.component';
     CheckoutComponent,
     HomeComponent,
     ProductComponent,
-    LoginComponent,
-    RegisterComponent,
     ContactComponent,
     ProductsComponent,
     AccountComponent
