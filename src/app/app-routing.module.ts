@@ -7,6 +7,7 @@ import { ProductComponent } from "./components/product/product.component";
 import { ContactComponent } from './components/contact/contact.component';
 import { ProductsComponent } from './components/products/products.component';
 import { AccountComponent } from './components/account/account.component';
+import { SuccessComponent } from './components/success/success.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -36,6 +37,9 @@ const routes: Routes = [
   },
   {
     path: 'account', component: AccountComponent
+  },
+  {
+    path: 'success', component: SuccessComponent
   },
   { path: '**', redirectTo: '' }
 ];
