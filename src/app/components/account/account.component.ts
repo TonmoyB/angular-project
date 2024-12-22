@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserDetectionService } from 'src/app/services/userDetection/user-detection.service';
 
 @Component({
   selector: 'app-account',
@@ -8,12 +9,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
-  isLogin: boolean = true; // Determines if login or register form is displayed
-  loginForm: FormGroup; // Login form group
-  registerForm: FormGroup; // Register form group
+  isLogin: boolean = true;
+  loginForm: FormGroup;
+  registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
-    // Initialize forms
+  constructor(private fb: FormBuilder, private router: Router, private userDetectionService: UserDetectionService) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -26,7 +26,7 @@ export class AccountComponent implements OnInit {
         password: ['', Validators.required],
         confirmPassword: ['', Validators.required],
       },
-      { validators: this.passwordsMatchValidator } // Custom validator for matching passwords
+      { validators: this.passwordsMatchValidator }
     );
   }
 
@@ -44,6 +44,7 @@ export class AccountComponent implements OnInit {
     if (this.loginForm.valid) {
       const credentials = this.loginForm.value;
       const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+
       const user = registeredUsers.find(
         (u: { username: string; password: string }) =>
           u.username === credentials.username && u.password === credentials.password
@@ -51,7 +52,7 @@ export class AccountComponent implements OnInit {
 
       if (user) {
         console.log('Login successful:', user);
-        localStorage.setItem('loggedInUser', JSON.stringify(user));
+        this.userDetectionService.setLoggedInUser(user); // Use UserService to set the logged-in user
         alert('Login successful!');
         this.router.navigate(['/checkout']);
       } else {
@@ -83,9 +84,8 @@ export class AccountComponent implements OnInit {
 
       existingUsers.push(user);
       localStorage.setItem('registeredUsers', JSON.stringify(existingUsers));
-      localStorage.removeItem('loggedInUser');
-      localStorage.setItem('loggedInUser', JSON.stringify(user));
 
+      this.userDetectionService.setLoggedInUser(user);
       console.log('Registration successful and user logged in:', user);
       alert('Registration successful. You are now logged in. Redirecting to checkout...');
       this.router.navigate(['/checkout']);
@@ -97,7 +97,6 @@ export class AccountComponent implements OnInit {
   passwordsMatchValidator(control: AbstractControl): { [key: string]: boolean } | null {
     const password = control.get('password')?.value;
     const confirmPassword = control.get('confirmPassword')?.value;
-
     return password === confirmPassword ? null : { passwordMismatch: true };
   }
 }

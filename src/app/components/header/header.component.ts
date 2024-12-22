@@ -1,7 +1,8 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/model';
 import { CartService } from 'src/app/services/cart/cart.service';
+import { UserDetectionService } from 'src/app/services/userDetection/user-detection.service';
 
 @Component({
   selector: 'app-header',
@@ -18,12 +19,13 @@ export class HeaderComponent implements OnInit {
     { label: 'COLLECTION', link: '/collection', exact: false },
     { label: 'CONTACT', link: '/contact', exact: false }
   ];
+
   cartCount: number = 0;
   menuOpen: boolean = false;
   loggedInUser: User = { name: "", username: "", password: "" };
   dropdownOpen: boolean = false;
 
-  constructor(private cartService: CartService, private router: Router) { }
+  constructor(private cartService: CartService, private router: Router, private userDetectionService: UserDetectionService) { }
 
   ngOnInit(): void {
     this.cartCount = this.cartService.cartCount;
@@ -31,10 +33,10 @@ export class HeaderComponent implements OnInit {
       this.cartCount = this.cartService.cartCount;
     };
 
-    const user = localStorage.getItem('loggedInUser');
-    if (user) {
-      this.loggedInUser = JSON.parse(user);
-    }
+    this.loggedInUser = this.userDetectionService.getLoggedInUser();
+    this.userDetectionService.onUserChange(() => {
+      this.loggedInUser = this.userDetectionService.getLoggedInUser();
+    });
   }
 
   toggleMenu() {
@@ -56,11 +58,10 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(): void {
-    localStorage.removeItem('loggedInUser');
-    this.loggedInUser = { name: "", username: "", password: "" };
+    this.userDetectionService.logout();
+    this.dropdownOpen = false;
     alert('You have been logged out.');
-    this.router.navigate(['/']);
-    this.closeDropdown;
+    // this.router.navigate(['/']);
   }
 
   navigateToAccount(): void {

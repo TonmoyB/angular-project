@@ -28,7 +28,7 @@
                     <i class="fas fa-user user-icon" (click)="toggleDropdown()"></i>
                     <div class="dropdown-menu" [class.show]="dropdownOpen">
                         <ng-container *ngIf="loggedInUser.username; else loginRegister">
-                            <p>Welcome, {{ loggedInUser.username }}</p>
+                            <p>{{ loggedInUser.username }}</p>
                             <button (click)="logout()">Logout</button>
                         </ng-container>
                         <ng-template #loginRegister>
