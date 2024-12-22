@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/models/model';
 import { CartService } from 'src/app/services/cart/cart.service';
+import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
   selector: 'app-products',
@@ -14,7 +15,10 @@ export class ProductsComponent implements OnInit {
   products: Product[] = [];
   originalProducts: Product[] = [];
 
-  constructor(private router: Router, private cartService: CartService) { }
+  constructor(private router: Router,
+    private cartService: CartService,
+    private toastService: ToastService
+  ) { }
   ngOnInit(): void {
     this.checkLink();
   }
@@ -44,7 +48,7 @@ export class ProductsComponent implements OnInit {
 
   addToCart(product: Product): void {
     this.cartService.addToCart(product);
-    alert(`${product.name} has been added to your cart.`);
+    this.toastService.show(`${product.name} has been added to your cart.`, 'info');
   }
 
   onSortChange(event: Event) {

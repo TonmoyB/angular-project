@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AccountComponent } from './components/account/account.component';
 import { NavigationService } from './services/navigation/navigation.service';
 import { SuccessComponent } from './components/success/success.component';
+import { ToastComponent } from './components/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SuccessComponent } from './components/success/success.component';
     ContactComponent,
     ProductsComponent,
     AccountComponent,
-    SuccessComponent
+    SuccessComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,

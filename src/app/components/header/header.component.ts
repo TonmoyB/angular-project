@@ -1,8 +1,9 @@
-import { ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/model';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
+import { ToastService } from 'src/app/services/toast/toast.service';
 import { UserDetectionService } from 'src/app/services/userDetection/user-detection.service';
 
 @Component({
@@ -27,7 +28,8 @@ export class HeaderComponent implements OnInit {
   dropdownOpen: boolean = false;
 
   constructor(private cartService: CartService, private router: Router,
-    private userDetectionService: UserDetectionService, private navigationService: NavigationService) { }
+    private userDetectionService: UserDetectionService, private navigationService: NavigationService,
+    private toastService: ToastService) { }
 
   ngOnInit(): void {
     this.cartCount = this.cartService.cartCount;
@@ -64,8 +66,7 @@ export class HeaderComponent implements OnInit {
     this.navigationService.setPreviousUrl(currentUrl);
     this.userDetectionService.logout();
     this.dropdownOpen = false;
-    alert('You have been logged out.');
-
+    this.toastService.show('Logout Successfull', 'success');
   }
 
   navigateToAccount(): void {

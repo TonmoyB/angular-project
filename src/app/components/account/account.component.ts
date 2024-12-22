@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/models/model';
+import { ToastService } from 'src/app/services/toast/toast.service';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
 import { UserDetectionService } from 'src/app/services/userDetection/user-detection.service';
 
@@ -20,7 +21,8 @@ export class AccountComponent implements OnInit {
     private router: Router,
     private userDetectionService: UserDetectionService,
     private navigationService: NavigationService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastService: ToastService
   ) {
 
     this.loginForm = this.fb.group({
@@ -67,14 +69,14 @@ export class AccountComponent implements OnInit {
       if (user) {
         console.log('Login successful:', user);
         this.userDetectionService.setLoggedInUser(user);
-        alert('Login successful!');
+        this.toastService.show('Login successful!', 'success');
         const previousUrl = this.navigationService.getPreviousUrl();
-        this.router.navigate([previousUrl || '/']); // Redirect to previous or home
+        this.router.navigate([previousUrl || '/']);
       } else {
-        alert('Invalid username or password. Please try again.');
+        this.toastService.show('Invalid username or password. Please try again.', 'error');
       }
     } else {
-      alert('Please fill in all the required fields.');
+      this.toastService.show('Please fill in all the required fields.', 'warning');
     }
   }
 
@@ -93,7 +95,7 @@ export class AccountComponent implements OnInit {
       );
 
       if (isUsernameTaken) {
-        alert('This username is already taken. Please choose a different username.');
+        this.toastService.show('This username is already taken. Please choose a different username.', 'error');
         return;
       }
 
@@ -102,12 +104,12 @@ export class AccountComponent implements OnInit {
 
       this.userDetectionService.setLoggedInUser(user);
       console.log('Registration successful and user logged in:', user);
-      alert('Registration successful. You are now logged in.');
+      this.toastService.show('Registration successful. You are now logged in.', 'success');
 
       const previousUrl = this.navigationService.getPreviousUrl();
-      this.router.navigate([previousUrl || '/']); // Redirect to previous or home
+      this.router.navigate([previousUrl || '/']);
     } else {
-      alert('Please fill in all the required fields correctly.');
+      this.toastService.show('Please fill in all the required fields correctly.', 'warning');
     }
   }
 
