@@ -19,7 +19,7 @@
             <div class="cart">
                 <a routerLink="/cart" class="cart-icon">
                     <img src="../../../assets/cart-icon.png" alt="Cart" />
-                    <span class="cart-count">{{ cartCount }}</span>
+                    <span *ngIf="cartCount>0" class="cart-count">{{ cartCount }}</span>
                 </a>
             </div>
 

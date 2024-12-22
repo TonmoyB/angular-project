@@ -63,6 +63,13 @@ export class CartService {
     return this.cartItems.reduce((total, item) => total + item.product.price * item.quantity, 0);
   }
 
+  clearCart(): void {
+    this.cartItems = [];
+    localStorage.removeItem('cart');
+    this.updateCart();
+  }
+
+
   private updateCart(): void {
     localStorage.setItem('cart', JSON.stringify(this.cartItems));
     this.cartCount = this.calculateCartCount();
@@ -75,4 +82,5 @@ export class CartService {
   private calculateCartCount(): number {
     return this.cartItems.length;
   }
+
 }

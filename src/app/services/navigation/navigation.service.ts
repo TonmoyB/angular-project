@@ -12,7 +12,7 @@ export class NavigationService {
     this.previousUrl = url;
   }
 
-  getPreviousUrl(): string | null {
+  getPreviousUrl(): string {
     return this.previousUrl;
   }
 }

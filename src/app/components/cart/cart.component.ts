@@ -77,12 +77,13 @@ export class CartComponent implements OnInit {
 
   goToCheckout(): void {
     this.checkoutButtonClicked = true;
-    this.router.navigate(['/account'], { queryParams: { checkoutButtonClicked: 'true' } });
-  }
-
-  navigateToAccount(): void {
-    this.checkoutButtonClicked = false;
-    this.router.navigate(['/account'], { queryParams: { checkoutButtonClicked: 'true' } });
+    this.router.navigate(['/checkout'], {
+      queryParams: {
+        subtotal: this.subtotal,
+        discount: this.discount,
+        totalPrice: this.totalPrice
+      }
+    });
   }
 
   private getQuantity(productId: string): number {

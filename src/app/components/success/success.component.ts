@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart/cart.service';
 
 @Component({
   selector: 'app-success',
@@ -8,10 +9,11 @@ import { Router } from '@angular/router';
 })
 export class SuccessComponent implements OnInit {
 
-  ngOnInit(): void {
-  }
+  constructor(private router: Router, private cartService: CartService) { }
 
-  constructor(private router: Router) { }
+  ngOnInit(): void {
+    this.cartService.clearCart();
+  }
 
   goToHome(): void {
     this.router.navigate(['/']);

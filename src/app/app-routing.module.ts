@@ -39,7 +39,7 @@ const routes: Routes = [
     path: 'account', component: AccountComponent
   },
   {
-    path: 'success', component: SuccessComponent
+    path: 'success', component: SuccessComponent, canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: '' }
 ];
