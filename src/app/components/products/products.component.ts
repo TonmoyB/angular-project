@@ -211,15 +211,17 @@ export class ProductsComponent implements OnInit {
   womenProducts = [
     {
       id: "1",
-      name: 'Souls Diamond',
-      price: 185.00,
-      image: '../../../assets/Symphony Of Souls Diamond Engagement Ring For Men.png'
+      name: "Alluring Gold Beaded",
+      price: 220.00,
+      image: "../../../assets/women/Alluring 22 Karat Gold Beaded Finger Ring.png",
+      type: "ring"
     },
     {
       id: "2",
-      name: 'Elegant Golden Ring',
-      price: 210.00,
-      image: '../../../assets/Symphony Of Souls Diamond Engagement Ring For Men.png'
+      name: "Bloomy Affair Pendant",
+      price: 180.00,
+      image: "../../../assets/women/Bloomy Affair Pendant.png",
+      type: "pendant"
     },
     {
       id: "3",
