@@ -66,7 +66,7 @@ export class HeaderComponent implements OnInit {
     this.navigationService.setPreviousUrl(currentUrl);
     this.userDetectionService.logout();
     this.dropdownOpen = false;
-    this.toastService.show('Logout Successfull', 'success');
+    this.toastService.show('Logout Successfull!', 'success');
   }
 
   navigateToAccount(): void {

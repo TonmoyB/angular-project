@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
   selector: 'app-contact',
@@ -13,7 +14,7 @@ export class ContactComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private toastService: ToastService) {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -26,10 +27,10 @@ export class ContactComponent implements OnInit {
     if (this.contactForm.valid) {
       const formData = this.contactForm.value;
       localStorage.setItem('contactFormData', JSON.stringify(formData));
-      alert('Your message has been sent!');
+      this.toastService.show('Your message has been sent!', 'success');
       this.contactForm.reset();
     } else {
-      alert('Please fill out all fields correctly.');
+      this.toastService.show('Please fill out all fields correctly!', 'error');
     }
   }
 }

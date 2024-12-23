@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart/cart.service';
+import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
   selector: 'app-checkout',
@@ -14,8 +15,12 @@ export class CheckoutComponent implements OnInit {
   discount: number = this.subtotal * 0.05;
   totalPrice: number = this.subtotal - this.discount;
 
-  constructor(private router: Router, private fb: FormBuilder, private cartService: CartService,
-    private route: ActivatedRoute
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private cartService: CartService,
+    private route: ActivatedRoute,
+    private toastService: ToastService
   ) {
     this.checkoutForm = this.fb.group({
       name: ['', [Validators.required]],
@@ -52,8 +57,6 @@ export class CheckoutComponent implements OnInit {
         })
       );
       this.router.navigate(['/success']);
-    } else {
-      alert('Please fill out all required fields correctly!');
     }
   }
 }

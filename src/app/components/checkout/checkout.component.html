@@ -42,7 +42,7 @@
                     <input type="text" id="zip" formControlName="zip"
                         [class.invalid]="checkoutForm.get('zip')?.invalid && checkoutForm.get('zip')?.touched" />
                     <div *ngIf="checkoutForm.get('zip')?.invalid && checkoutForm.get('zip')?.touched">
-                        <small class="error">Valid ZIP Code (5 digits) is required.</small>
+                        <small class="error">Valid ZIP Code (4 digits) is required.</small>
                     </div>
 
                     <button type="submit" class="checkout-btn" [disabled]="checkoutForm.invalid">

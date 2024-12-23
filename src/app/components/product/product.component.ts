@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Product } from 'src/app/models/model';
 import { CartService } from 'src/app/services/cart/cart.service';
+import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
   selector: 'app-product',
@@ -23,7 +24,12 @@ export class ProductComponent implements OnInit {
   quantity: number = 1;
   totalPrice: number = 0;
 
-  constructor(private route: ActivatedRoute, private location: Location, private cartService: CartService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private location: Location,
+    private cartService: CartService,
+    private toastService: ToastService
+  ) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -71,6 +77,7 @@ export class ProductComponent implements OnInit {
       this.updatePrice();
     }
   }
+
   extractPageName(url: string): string {
     if (url) {
       return url.slice(1).toUpperCase();
@@ -84,7 +91,7 @@ export class ProductComponent implements OnInit {
 
   addToCart(): void {
     this.cartService.addToCart(this.product, this.quantity);
-    alert(`${this.product.name} has been added to your cart.`);
+    this.toastService.show(`${this.product.name} has been added to your cart!`, 'success');
   }
 
 }
