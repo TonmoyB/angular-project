@@ -73,10 +73,8 @@ export class AccountComponent implements OnInit {
         const previousUrl = this.navigationService.getPreviousUrl();
         this.router.navigate([previousUrl || '/']);
       } else {
-        this.toastService.show('Invalid username or password. Please try again.', 'error');
+        this.toastService.show('Invalid Username or Password', 'error');
       }
-    } else {
-      this.toastService.show('Please fill in all the required fields.', 'warning');
     }
   }
 
@@ -95,7 +93,7 @@ export class AccountComponent implements OnInit {
       );
 
       if (isUsernameTaken) {
-        this.toastService.show('This username is already taken. Please choose a different username.', 'error');
+        this.toastService.show('Username already taken!', 'error');
         return;
       }
 
@@ -104,12 +102,10 @@ export class AccountComponent implements OnInit {
 
       this.userDetectionService.setLoggedInUser(user);
       console.log('Registration successful and user logged in:', user);
-      this.toastService.show('Registration successful. You are now logged in.', 'success');
+      this.toastService.show('Registration successful!', 'success');
 
       const previousUrl = this.navigationService.getPreviousUrl();
       this.router.navigate([previousUrl || '/']);
-    } else {
-      this.toastService.show('Please fill in all the required fields correctly.', 'warning');
     }
   }
 

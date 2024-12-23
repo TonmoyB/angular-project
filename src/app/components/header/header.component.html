@@ -16,6 +16,20 @@
         </nav>
 
         <div class="cart-user-container">
+            <div class="search-container">
+                <input type="text" placeholder="Search..." [formControl]="searchControl"
+                    (focus)="searchFocused = true" />
+                <div *ngIf="searchResults.length > 0 && searchFocused" class="search-results">
+                    <ul>
+                        <li *ngFor="let result of searchResults">
+                            <button (click)="navigateToProduct(result)" class="result-item">
+                                {{ result.name }}
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
             <div class="cart">
                 <a routerLink="/cart" class="cart-icon">
                     <img src="../../../assets/cart-icon.png" alt="Cart" />
