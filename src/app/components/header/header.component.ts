@@ -26,8 +26,8 @@ export class HeaderComponent implements OnInit {
 
   cartCount: number = 0;
   menuOpen: boolean = false;
-  loggedInUser: User = { name: "", username: "", password: "" };
   dropdownOpen: boolean = false;
+  loggedInUser: User = { name: "", username: "", password: "" };
   searchControl = new FormControl('');
   searchFocused = false;
   searchResults: Product[] = [];
@@ -73,12 +73,11 @@ export class HeaderComponent implements OnInit {
     }, 300);
   }
 
-
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
 
-  toggleDropdown(): void {
+  toggleDropdown() {
     this.dropdownOpen = !this.dropdownOpen;
   }
 
@@ -132,4 +131,6 @@ export class HeaderComponent implements OnInit {
       this.searchResults = [];
     }
   }
+
+
 }

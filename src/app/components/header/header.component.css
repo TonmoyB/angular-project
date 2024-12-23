@@ -155,7 +155,7 @@
 
 .dropdown-menu {
     position: absolute;
-    top: 95%;
+    top: 110%;
     right: -55px;
     background-color: var(--dark-gray);
     border: 1px solid var(--gold);
@@ -295,7 +295,9 @@
     }
 
     .nav ul {
-        flex-direction: column;
+        justify-content: center;
+        height: 50px;
+        flex-direction: row;
         gap: 1rem;
         align-items: center;
     }

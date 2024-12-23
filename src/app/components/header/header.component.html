@@ -1,10 +1,11 @@
 <header class="header">
     <div class="container">
+
         <div class="logo">
             <img src="../../../assets/dhanlaxmi-high-resolution-logo_2.png" alt="DhanLaxmi">
         </div>
 
-        <nav class="nav" id="nav-menu">
+        <nav class="nav" [class.active]="menuOpen" id="nav-menu">
             <ul>
                 <li *ngFor="let navItem of navItems">
                     <a [routerLink]="navItem.link" routerLinkActive="active"
@@ -16,6 +17,7 @@
         </nav>
 
         <div class="cart-user-container">
+
             <div class="search-container">
                 <input type="text" placeholder="Search..." [formControl]="searchControl"
                     (focus)="searchFocused = true" />
@@ -33,7 +35,7 @@
             <div class="cart">
                 <a routerLink="/cart" class="cart-icon">
                     <img src="../../../assets/cart-icon.png" alt="Cart" />
-                    <span *ngIf="cartCount>0" class="cart-count">{{ cartCount }}</span>
+                    <span *ngIf="cartCount > 0" class="cart-count">{{ cartCount }}</span>
                 </a>
             </div>
 
