@@ -24,4 +24,7 @@ export class HomeComponent implements OnInit {
   goToMen(): void {
     this.router.navigate(["/men"]);
   }
+  goToAll(): void {
+    this.router.navigate(["/collection"]);
+  }
 }
