@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private toastService: ToastService) { }
 
   ngOnInit(): void {
   }
@@ -26,5 +27,8 @@ export class HomeComponent implements OnInit {
   }
   goToAll(): void {
     this.router.navigate(["/collection"]);
+  }
+  goToJoin(): void {
+    this.toastService.show("Coming Soon !!!", 'info');
   }
 }

@@ -210,63 +210,63 @@ export class ProductsComponent implements OnInit {
 
   womenProducts = [
     {
-      id: "1",
+      id: "19",
       name: "Alluring Gold Beaded",
       price: 220.00,
       image: "../../../assets/women/Alluring 22 Karat Gold Beaded Finger Ring.png",
       type: "ring"
     },
     {
-      id: "2",
+      id: "20",
       name: "Bloomy Affair Pendant",
       price: 180.00,
       image: "../../../assets/women/Bloomy Affair Pendant.png",
       type: "pendant"
     },
     {
-      id: "3",
+      id: "21",
       name: 'Captivating Grace Drop',
       price: 120.00,
       image: '../../../assets/women/Captivating Grace Drop.png',
       type: 'earrings'
     },
     {
-      id: '4',
+      id: '22',
       name: 'Dazzling Allure',
       price: 99.00,
       image: '../../../assets/women/Dazzling Allure Diamond Ring.png',
       type: 'ring'
     },
     {
-      id: "5",
+      id: "23",
       name: "Ethereal Infusion",
       price: 220.00,
       image: "../../../assets/women/Ethereal Infusion.png",
       type: "pendant"
     },
     {
-      id: "6",
+      id: "24",
       name: "Shimmering Wavy",
       price: 380.00,
       image: "../../../assets/women/Shimmering Wavy Diamond Finger Ring.png",
       type: "ring"
     },
     {
-      id: "7",
+      id: "25",
       name: 'Simple Gold Chain',
       price: 120.00,
       image: '../../../assets/women/Simple Gold Chain.png',
       type: 'chain'
     },
     {
-      id: '8',
+      id: '26',
       name: 'Starry Dual Tone',
       price: 99.00,
       image: '../../../assets/women/Starry Dual Tone.png',
       type: 'earrings'
     },
     {
-      id: '9',
+      id: '27',
       name: 'Stunning Gold Chain',
       price: 399.00,
       image: '../../../assets/women/Stunning Gold Chain.png',

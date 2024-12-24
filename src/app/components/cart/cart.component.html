@@ -32,9 +32,10 @@
                         <!-- Quantity Controls -->
                         <td class="product-quantity">
                             <button class="quantity-btn" (click)="decrementQuantity(cartItem.product.id)">-</button>
-                            <input type="text" [value]="cartItem.quantity"
+                            <input type="number" [value]="cartItem.quantity"
                                 (input)="onQuantityInput(cartItem.product, $event)"
-                                (change)="onQuantityChange(cartItem.product, cartItem.quantity.toString())" />
+                                (change)="onQuantityChange(cartItem.product, cartItem.quantity.toString())"
+                                class="no-arrows" />
                             <button class="quantity-btn" (click)="incrementQuantity(cartItem.product.id)">+</button>
                         </td>
 

@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { Product } from 'src/app/models/model';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
+import { parse } from 'path';
 
 @Component({
   selector: 'app-product',
@@ -67,15 +68,16 @@ export class ProductComponent implements OnInit {
   onQuantityInput(event: Event): void {
     const input = (event.target as HTMLInputElement).value;
     const parsedValue = parseInt(input, 10);
-    this.quantity = isNaN(parsedValue) || parsedValue < 1 ? 1 : parsedValue;
+    this.quantity = parsedValue;
     this.updatePrice();
   }
 
   onQuantityChange(): void {
-    if (this.quantity < 1) {
-      this.quantity = 1;
-      this.updatePrice();
-    }
+    // if (this.quantity < 1) {
+    //   this.quantity = 1;
+    //   this.updatePrice();
+    // }
+    this.onQuantityInput
   }
 
   extractPageName(url: string): string {
@@ -90,6 +92,12 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(): void {
+    console.log(this.quantity);
+
+    if (this.quantity < 1) {
+      this.toastService.show('Quantity must be at least 1 to add to cart.', 'error');
+      return;
+    }
     this.cartService.addToCart(this.product, this.quantity);
     this.toastService.show(`${this.product.name} has been added to your cart!`, 'success');
   }

@@ -81,22 +81,13 @@ export class HeaderComponent implements OnInit {
     this.dropdownOpen = !this.dropdownOpen;
   }
 
-  @HostListener('document:click', ['$event'])
-  closeDropdown(event: Event): void {
-    const target = event.target as HTMLElement;
-    const dropdown = document.querySelector('.user-dropdown');
-
-    if (this.dropdownOpen && dropdown && !dropdown.contains(target)) {
-      this.dropdownOpen = false;
-    }
-  }
-
   logout(): void {
     const currentUrl = this.router.url;
     this.navigationService.setPreviousUrl(currentUrl);
     this.userDetectionService.logout();
     this.dropdownOpen = false;
     this.toastService.show('Logout Successfull!', 'success');
+    this.router.navigate(['/account']);
   }
 
   navigateToAccount(): void {
@@ -124,13 +115,15 @@ export class HeaderComponent implements OnInit {
     const target = event.target as HTMLElement;
 
     const isInsideSearchContainer = target.closest('.search-container');
-
     if (!isInsideSearchContainer) {
       this.searchFocused = false;
       this.searchControl.setValue('');
       this.searchResults = [];
     }
+
+    const isInsideDropdown = target.closest('.user-dropdown');
+    if (!isInsideDropdown) {
+      this.dropdownOpen = false;
+    }
   }
-
-
 }

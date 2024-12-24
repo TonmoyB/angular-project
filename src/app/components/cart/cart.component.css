@@ -157,6 +157,18 @@ tbody td {
     color: var(--gold);
 }
 
+.no-arrows {
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.no-arrows::-webkit-inner-spin-button,
+.no-arrows::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 @media (max-width: 768px) {
     .cart-content {
         flex-direction: column;
