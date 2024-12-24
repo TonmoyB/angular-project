@@ -125,5 +125,10 @@ export class HeaderComponent implements OnInit {
     if (!isInsideDropdown) {
       this.dropdownOpen = false;
     }
+
+    const isInsideMenu = target.closest('.mobile-menu') || target.closest('.nav');
+    if (!isInsideMenu) {
+      this.menuOpen = false;
+    }
   }
 }
