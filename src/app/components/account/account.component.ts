@@ -15,6 +15,9 @@ export class AccountComponent implements OnInit {
   isLogin: boolean = true;
   loginForm: FormGroup;
   registerForm: FormGroup;
+  showLoginPassword: boolean = false;
+  showRegisterPassword: boolean = false;
+  showConfirmPassword: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -46,6 +49,18 @@ export class AccountComponent implements OnInit {
       const checkout = params['checkoutButtonClicked'] === 'true';
       this.navigationService.setPreviousUrl(checkout ? '/checkout' : '/cart');
     });
+  }
+
+  toggleShowLoginPassword(): void {
+    this.showLoginPassword = !this.showLoginPassword;
+  }
+
+  toggleShowRegisterPassword(): void {
+    this.showRegisterPassword = !this.showRegisterPassword;
+  }
+
+  toggleShowConfirmPassword(): void {
+    this.showConfirmPassword = !this.showConfirmPassword;
   }
 
   switchToLogin(): void {

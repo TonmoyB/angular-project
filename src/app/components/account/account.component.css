@@ -75,3 +75,26 @@ button[disabled] {
     background-color: grey;
     cursor: not-allowed;
 }
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 30px;
+}
+
+.password-wrapper i {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #888;
+}
+
+.password-wrapper i.active {
+    color: #333;
+}
