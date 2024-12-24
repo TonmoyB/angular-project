@@ -1,13 +1,13 @@
 <div class="outerContainer">
     <div class="auth-container">
-        <!-- Tabs -->
+
         <div class="auth-tabs">
             <button [class.active]="isLogin" (click)="switchToLogin()">LOGIN</button>
             <button [class.active]="!isLogin" (click)="switchToRegister()">REGISTER</button>
         </div>
 
         <div>
-            <!-- Login Form -->
+
             <form *ngIf="isLogin" [formGroup]="loginForm" (ngSubmit)="onLogin()">
                 <div class="form-group">
                     <label for="username">Username</label>
@@ -35,7 +35,6 @@
                 <button type="submit" [disabled]="loginForm.invalid">LOGIN</button>
             </form>
 
-            <!-- Registration Form -->
             <form *ngIf="!isLogin" [formGroup]="registerForm" (ngSubmit)="onRegister()">
                 <div class="form-group">
                     <label for="name">Name</label>

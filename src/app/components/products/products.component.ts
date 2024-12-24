@@ -225,24 +225,54 @@ export class ProductsComponent implements OnInit {
     },
     {
       id: "3",
-      name: 'Classic Leather Bag',
+      name: 'Captivating Grace Drop',
       price: 120.00,
-      image: '../../../assets/Symphony Of Souls Diamond Engagement Ring For Men.png'
+      image: '../../../assets/women/Captivating Grace Drop.png',
+      type: 'earrings'
     },
     {
       id: '4',
-      name: 'Fashionable Sunglasses',
+      name: 'Dazzling Allure',
       price: 99.00,
-      image: '../../../assets/Symphony Of Souls Diamond Engagement Ring For Men.png'
+      image: '../../../assets/women/Dazzling Allure Diamond Ring.png',
+      type: 'ring'
+    },
+    {
+      id: "5",
+      name: "Ethereal Infusion",
+      price: 220.00,
+      image: "../../../assets/women/Ethereal Infusion.png",
+      type: "pendant"
+    },
+    {
+      id: "6",
+      name: "Shimmering Wavy",
+      price: 380.00,
+      image: "../../../assets/women/Shimmering Wavy Diamond Finger Ring.png",
+      type: "ring"
+    },
+    {
+      id: "7",
+      name: 'Simple Gold Chain',
+      price: 120.00,
+      image: '../../../assets/women/Simple Gold Chain.png',
+      type: 'chain'
+    },
+    {
+      id: '8',
+      name: 'Starry Dual Tone',
+      price: 99.00,
+      image: '../../../assets/women/Starry Dual Tone.png',
+      type: 'earrings'
+    },
+    {
+      id: '9',
+      name: 'Stunning Gold Chain',
+      price: 399.00,
+      image: '../../../assets/women/Stunning Gold Chain.png',
+      type: 'chain'
     }
   ];
 
-  allProducts = [
-    {
-      id: "1",
-      name: 'Souls Diamond',
-      price: 185.00,
-      image: '../../../assets/Symphony Of Souls Diamond Engagement Ring For Men.png'
-    }
-  ]
+  allProducts = this.menProducts.concat(this.womenProducts);
 }
