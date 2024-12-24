@@ -1,5 +1,5 @@
 <div class="product-details">
-    <h1 class="product-title">{{ product.name }}</h1>
+    <h1 class="product-title">{{ product.name}}</h1>
 
     <div class="product-container">
         <div class="product-image">
@@ -8,7 +8,7 @@
 
         <div class="product-info">
             <h2 class="price">
-                <span class="new-price">${{ totalPrice }}</span>
+                <span class="new-price">{{ totalPrice | currency:'USD' }}</span>
             </h2>
             <p class="product-description">
                 Porttitor magna cras vel libero hendrerit vel nam in sapien id urna egestas cursus. Ut enim ad minim

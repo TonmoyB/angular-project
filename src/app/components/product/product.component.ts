@@ -5,6 +5,7 @@ import { Product } from 'src/app/models/model';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
 import { parse } from 'path';
+import { flatMap } from 'rxjs';
 
 @Component({
   selector: 'app-product',
@@ -24,6 +25,7 @@ export class ProductComponent implements OnInit {
   previousTitle: string = ""
   quantity: number = 1;
   totalPrice: number = 0;
+  flag: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -68,16 +70,22 @@ export class ProductComponent implements OnInit {
   onQuantityInput(event: Event): void {
     const input = (event.target as HTMLInputElement).value;
     const parsedValue = parseInt(input, 10);
-    this.quantity = parsedValue;
+
+    if (isNaN(parsedValue) || parsedValue < 1) {
+      this.flag = true;
+      this.quantity = 1;
+    } else {
+      this.quantity = parsedValue;
+    }
     this.updatePrice();
   }
 
   onQuantityChange(): void {
-    // if (this.quantity < 1) {
-    //   this.quantity = 1;
-    //   this.updatePrice();
-    // }
-    this.onQuantityInput
+    if (this.quantity < 1) {
+      this.flag = true
+      this.quantity = 1;
+      this.updatePrice();
+    }
   }
 
   extractPageName(url: string): string {
@@ -92,10 +100,9 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(): void {
-    console.log(this.quantity);
-
-    if (this.quantity < 1) {
-      this.toastService.show('Quantity must be at least 1 to add to cart.', 'error');
+    if (this.flag === true) {
+      this.toastService.show(`Invalid Quantity!!`, 'error');
+      this.flag = false;
       return;
     }
     this.cartService.addToCart(this.product, this.quantity);
