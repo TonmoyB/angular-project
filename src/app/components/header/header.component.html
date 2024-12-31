@@ -1,62 +1,63 @@
 <header class="header">
     <div class="container">
 
-        <div class="logo">
-            <img src="../../../assets/dhanlaxmi-high-resolution-logo_2.png" alt="DhanLaxmi">
-        </div>
+        <div class="logo-with-mobileBars">
+            <div class="logo">
+                <img src="../../../assets/dhanlaxmi-high-resolution-logo_2.png" alt="DhanLaxmi">
+            </div>
 
-        <nav class="nav" [class.active]="menuOpen" id="nav-menu">
-            <ul>
-                <li *ngFor="let navItem of navItems">
-                    <a [routerLink]="navItem.link" routerLinkActive="active"
-                        [routerLinkActiveOptions]="{ exact: navItem.exact }">
-                        {{ navItem.label }}
+            <nav class="nav" [class.active]="menuOpen" id="nav-menu">
+                <ul>
+                    <li *ngFor="let navItem of navItems">
+                        <a [routerLink]="navItem.link" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: navItem.exact }">
+                            {{ navItem.label }}
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="cart-user-container">
+                <div class="cart">
+                    <a routerLink="/cart" class="cart-icon">
+                        <img src="../../../assets/cart-icon.png" alt="Cart" />
+                        <span *ngIf="cartCount > 0" class="cart-count">{{ cartCount }}</span>
                     </a>
-                </li>
-            </ul>
-        </nav>
+                </div>
 
-        <div class="cart-user-container">
-
-            <div class="search-container">
-                <input type="text" placeholder="Search..." [formControl]="searchControl"
-                    (focus)="searchFocused = true" />
-                <div *ngIf="searchResults.length > 0 && searchFocused" class="search-results">
-                    <ul>
-                        <li *ngFor="let result of searchResults">
-                            <button (click)="navigateToProduct(result)" class="result-item">
-                                {{ result.name }}
-                            </button>
-                        </li>
-                    </ul>
+                <div class="user-dropdown">
+                    <i class="fas fa-user user-icon" (click)="toggleDropdown()"></i>
+                    <div class="dropdown-menu" [class.show]="dropdownOpen">
+                        <ng-container *ngIf="loggedInUser.username; else loginRegister">
+                            <p>{{ loggedInUser.username }}</p>
+                            <button (click)="logout()">Logout</button>
+                        </ng-container>
+                        <ng-template #loginRegister>
+                            <button (click)="navigateToAccount()">Login/Register</button>
+                        </ng-template>
+                    </div>
                 </div>
             </div>
 
-            <div class="cart">
-                <a routerLink="/cart" class="cart-icon">
-                    <img src="../../../assets/cart-icon.png" alt="Cart" />
-                    <span *ngIf="cartCount > 0" class="cart-count">{{ cartCount }}</span>
-                </a>
-            </div>
-
-            <div class="user-dropdown">
-                <i class="fas fa-user user-icon" (click)="toggleDropdown()"></i>
-                <div class="dropdown-menu" [class.show]="dropdownOpen">
-                    <ng-container *ngIf="loggedInUser.username; else loginRegister">
-                        <p>{{ loggedInUser.username }}</p>
-                        <button (click)="logout()">Logout</button>
-                    </ng-container>
-                    <ng-template #loginRegister>
-                        <button (click)="navigateToAccount()">Login/Register</button>
-                    </ng-template>
-                </div>
+            <div class="mobile-menu" (click)="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
             </div>
         </div>
 
-        <div class="mobile-menu" (click)="toggleMenu()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+        <div class="search-container">
+            <input type="text" placeholder="Search..." [formControl]="searchControl" (focus)="searchFocused = true" />
+            <div *ngIf="searchResults.length > 0 && searchFocused" class="search-results">
+                <ul>
+                    <li *ngFor="let result of searchResults">
+                        <button (click)="navigateToProduct(result)" class="result-item">
+                            {{ result.name }}
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </div>
+
     </div>
 </header>

@@ -11,6 +11,7 @@
 .logo {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .logo img {
@@ -26,18 +27,28 @@
 
 .container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
     padding: 0 1rem;
+    gap: 1rem;
+}
+
+.logo-with-mobileBars {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
 }
 
 .nav ul {
     display: flex;
     list-style: none;
-    gap: 3rem;
+    gap: 4.5rem;
     margin: 0;
     padding: 0;
 }
@@ -114,7 +125,7 @@
 .cart-user-container {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2.5rem;
 }
 
 .user-auth {
@@ -213,10 +224,15 @@
 
 .search-container {
     position: relative;
-    width: 100%;
+    width: auto;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .search-container input {
+    width: 38%;
     padding: 10px 15px;
     font-size: 1rem;
     border: 1px solid #ccc;
@@ -244,9 +260,9 @@
 
 .search-results ul {
     list-style-type: none;
-    background-color: var(--dark-gray);
     margin: 0;
     padding: 0;
+    background-color: var(--dark-gray);
 }
 
 .search-results li {
@@ -283,6 +299,19 @@
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .search-container input {
+        width: 100%;
+    }
+
     .nav {
         display: none;
         flex-direction: column;
