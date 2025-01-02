@@ -26,7 +26,9 @@
                 </div>
 
                 <div class="user-dropdown">
-                    <i class="fas fa-user user-icon" (click)="toggleDropdown()"></i>
+                    <i class="{{ loggedInUser.username ? 'fas fa-user-check' : 'fas fa-user-gear' }} user-icon"
+                        (click)="toggleDropdown()">
+                    </i>
                     <div class="dropdown-menu" [class.show]="dropdownOpen">
                         <ng-container *ngIf="loggedInUser.username; else loginRegister">
                             <p>{{ loggedInUser.username }}</p>
@@ -37,6 +39,7 @@
                         </ng-template>
                     </div>
                 </div>
+
             </div>
 
             <div class="mobile-menu" (click)="toggleMenu()">
