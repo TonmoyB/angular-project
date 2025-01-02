@@ -43,10 +43,13 @@
             </div>
 
             <div class="mobile-menu" (click)="toggleMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+                <div [class.open]="menuOpen">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
             </div>
+
         </div>
 
         <div class="search-container">
