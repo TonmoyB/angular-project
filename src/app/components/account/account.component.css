@@ -89,10 +89,14 @@ button[disabled] {
 }
 
 .password-wrapper i {
+    margin-top: 3px;
     position: absolute;
     right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     cursor: pointer;
     color: #888;
+    font-size: 1rem;
 }
 
 .password-wrapper i.active {
