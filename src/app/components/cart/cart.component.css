@@ -169,8 +169,69 @@ tbody td {
     margin: 0;
 }
 
+/* Mobile Responsive Styling */
 @media (max-width: 768px) {
     .cart-content {
         flex-direction: column;
+    }
+
+    .cart-table table,
+    .cart-table thead,
+    .cart-table tbody,
+    .cart-table tr {
+        display: block;
+    }
+
+    .cart-table thead {
+        display: none;
+    }
+
+    .cart-table tr {
+        border-bottom: 1px solid #333;
+        margin-bottom: 1rem;
+        padding: 1rem;
+    }
+
+    .cart-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+    }
+
+    /* Add inline labels for each cell */
+    .cart-table td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #aaa;
+        text-transform: uppercase;
+        margin-right: 1rem;
+    }
+
+    .product-info {
+        flex-direction: row;
+    }
+
+    .product-info img {
+        margin-bottom: 0.5rem;
+    }
+
+    .cart-totals {
+        margin-top: 2rem;
+    }
+
+    .product-quantity {
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+
+    .quantity-btn {
+        padding: 0.5rem 1rem;
+    }
+
+    .product-price,
+    .product-subtotal {
+        font-size: 1rem;
+        text-align: left;
     }
 }
